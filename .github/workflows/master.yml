@@ -131,6 +131,14 @@ jobs:
         run: |
           msbuild packaging\windows\naisdevice.wixproj
           md5sum bin/windows/naisdevice.msi
+      - name: Create certs
+        run: |
+          Set-Content -Path certificate.cer -Value '${{ secrets.MSI_SIGN_CERT }}'
+          Set-Content -Path certificate.key -Value '${{ secrets.MSI_SIGN_KEY }}'
+          certutil –MergePFX certificate.cer certificate.pfx
+      - name: Sign installer
+        run: |
+          & 'C:/Program Files (x86)/Windows Kits/10/bin/10.0.17763.0/x86/signtool.exe' sign /debug /f certificate.pfx bin/windows/naisdevice.msi      
       - name: upload windows installer
         uses: actions/upload-artifact@v2
         with:
