@@ -42,7 +42,7 @@
 
 - name: Move private key if already generated
   copy:
-    remote_src: True
+    remote_src: true
     src: /usr/local/etc/nais-device/
     dest: /etc/gateway-agent/
   when: private_key.stat.exists
@@ -94,6 +94,7 @@
     path: /etc/default/gateway-agent
     line: "{{ item.line }}"
     regexp: "{{ item.regexp }}"
+  no_log: true
   loop:
     - regexp: "^GATEWAY_AGENT_NAME=.*$"
       line: GATEWAY_AGENT_NAME="{{ name }}"
