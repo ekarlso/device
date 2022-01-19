@@ -63,15 +63,18 @@
     - restart_gateway-agent
 
 - name: Get apiserver password
-  shell: |
-    if grep -q "GATEWAY_AGENT_APISERVERPASSWORD=\"\""; then
-      PW=$(gcloud --project nais-device secrets versions access latest --secret {{ gcp_project }}_{{ name }}_api-server-password)
-      echo "GATEWAY_AGENT_APISERVERPASSWORD=\"$PW\"" >> /etc/default/gateway-agent
-    fi
+  shell: gcloud --project nais-device secrets versions access latest --secret {{ gcp_project }}_{{ name }}_api-server-password
   args:
     executable: /bin/bash
   environment:
     PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+  register: apiserver_password
+
+- name: Set apiserver password
+  lineinfile:
+    path: /etc/default/gateway-agent
+    line: GATEWAY_AGENT_APISERVERPASSWORD="{{ apiserver_password.stdout }}"
+    regexp: "^GATEWAY_AGENT_APISERVERPASSWORD=.*$"
 
 - name: Remove old gateway agent systemd unit file
   file:
