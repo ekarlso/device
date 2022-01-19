@@ -7,6 +7,7 @@ import (
 	"sync"
 
 	"github.com/nais/device/pkg/apiserver/jita"
+	apiserver_metrics "github.com/nais/device/pkg/apiserver/metrics"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -14,6 +15,10 @@ import (
 	"github.com/nais/device/pkg/apiserver/auth"
 	"github.com/nais/device/pkg/apiserver/database"
 	"github.com/nais/device/pkg/pb"
+)
+
+const (
+	AdminUsername = "admin"
 )
 
 type grpcServer struct {
@@ -46,6 +51,7 @@ func NewGRPCServer(db database.APIServer, authenticator auth.Authenticator, apik
 func (s *grpcServer) GetDeviceConfiguration(request *pb.GetDeviceConfigurationRequest, stream pb.APIServer_GetDeviceConfigurationServer) error {
 	s.lock.Lock()
 	s.streams[request.SessionKey] = stream
+	apiserver_metrics.DevicesConnected.Set(float64(len(s.streams)))
 	s.lock.Unlock()
 
 	// send initial device configuration
@@ -59,6 +65,7 @@ func (s *grpcServer) GetDeviceConfiguration(request *pb.GetDeviceConfigurationRe
 
 	s.lock.Lock()
 	delete(s.streams, request.SessionKey)
+	apiserver_metrics.DevicesConnected.Set(float64(len(s.streams)))
 	s.lock.Unlock()
 
 	return nil
@@ -91,7 +98,7 @@ func (s *grpcServer) SendDeviceConfiguration(ctx context.Context, sessionKey str
 		return fmt.Errorf("get user gateways: %w", err)
 	}
 
-	m, err := DeviceConfigsReturned.GetMetricWithLabelValues(device.Serial, device.Username)
+	m, err := apiserver_metrics.DeviceConfigsReturned.GetMetricWithLabelValues(device.Serial, device.Username)
 	if err != nil {
 		log.Errorf("BUG: get metric: %s", err)
 	} else {
@@ -129,6 +136,26 @@ func (s *grpcServer) Login(ctx context.Context, r *pb.APIServerLoginRequest) (*p
 	return &pb.APIServerLoginResponse{
 		Session: session,
 	}, nil
+}
+
+func (s *grpcServer) AdminListGateways(request *pb.AdminListGatewayRequest, stream pb.APIServer_AdminListGatewaysServer) error {
+	err := s.apikeyAuthenticator.Authenticate(AdminUsername, request.Password)
+	if err != nil {
+		return status.Error(codes.Unauthenticated, err.Error())
+	}
+
+	gateways, err := s.db.ReadGateways(stream.Context())
+	if err != nil {
+		return status.Error(codes.Unavailable, err.Error())
+	}
+	for _, gw := range gateways {
+		err = stream.Send(gw)
+		if err != nil {
+			return status.Error(codes.Aborted, err.Error())
+		}
+	}
+
+	return nil
 }
 
 func (s *grpcServer) GetGatewayConfiguration(request *pb.GetGatewayConfigurationRequest, stream pb.APIServer_GetGatewayConfigurationServer) error {
@@ -199,7 +226,7 @@ func (s *grpcServer) SendGatewayConfiguration(ctx context.Context, gatewayName s
 		Routes: gateway.Routes,
 	}
 
-	m, err := GatewayConfigsReturned.GetMetricWithLabelValues(gateway.Name)
+	m, err := apiserver_metrics.GatewayConfigsReturned.GetMetricWithLabelValues(gateway.Name)
 	if err != nil {
 		log.Errorf("getting metric metric: %v", err)
 	} else {

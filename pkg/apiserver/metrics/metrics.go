@@ -1,30 +1,30 @@
-package api
+package apiserver_metrics
 
 import (
 	"net/http"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	log "github.com/sirupsen/logrus"
 )
 
 var (
+	DevicesConnected          prometheus.Gauge
 	PrivilegedUsersPerGateway *prometheus.GaugeVec
 	DeviceConfigsReturned     *prometheus.CounterVec
 	GatewayConfigsReturned    *prometheus.CounterVec
-	initialized               = false
 )
 
-func Serve(address string) {
-	log.Infof("Prometheus serving metrics at %v", address)
-	_ = http.ListenAndServe(address, promhttp.Handler())
+func Serve(address string) error {
+	return http.ListenAndServe(address, promhttp.Handler())
 }
 
-func InitializeMetrics() {
-	if initialized {
-		return
-	}
-	initialized = true
+func init() {
+	DevicesConnected = prometheus.NewGauge(prometheus.GaugeOpts{
+		Namespace: "naisdevice",
+		Subsystem: "apiserver",
+		Name:      "devices_connected",
+		Help:      "number of clients currently connected to api server",
+	})
 
 	PrivilegedUsersPerGateway = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: "naisdevice",
@@ -47,5 +47,10 @@ func InitializeMetrics() {
 		Help:      "Total number of configs returned to gateway since apiserver started.",
 	}, []string{"gateway"})
 
-	prometheus.MustRegister(PrivilegedUsersPerGateway, DeviceConfigsReturned, GatewayConfigsReturned)
+	prometheus.MustRegister(
+		DevicesConnected,
+		PrivilegedUsersPerGateway,
+		DeviceConfigsReturned,
+		GatewayConfigsReturned,
+	)
 }

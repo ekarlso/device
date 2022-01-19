@@ -132,7 +132,6 @@ func TestGatewayConfig(t *testing.T) {
 }
 
 func TestPrivilegedGatewayConfig(t *testing.T) {
-	api.InitializeMetrics()
 	ctx := context.Background()
 
 	privilegedUsers := []jita.PrivilegedUser{{
@@ -279,8 +278,6 @@ func setup(t *testing.T, j jita.Client) (database.APIServer, chi.Router) {
 	if err != nil {
 		t.Fatalf("Instantiating database: %v", err)
 	}
-
-	api.InitializeMetrics()
 
 	sessions := auth.NewSessionStore(db)
 
