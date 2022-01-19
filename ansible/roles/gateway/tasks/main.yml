@@ -71,7 +71,7 @@
 - name: Remove old gateway agent systemd unit file
   file:
     path: /etc/systemd/system/gateway-agent.service
-    ensure: absent
+    state: absent
 
 - name: Ensure gateway-agent is enabled
   systemd:
