@@ -49,6 +49,11 @@
   notify:
     - restart_gateway-agent
 
+- name: Remove old config
+  file:
+    path: /usr/local/etc/nais-device/
+    state: absent
+
 - name: Generate wireguard key
   shell: umask 077 && wg genkey > /etc/gateway-agent/private.key
   when: not private_key.stat.exists
