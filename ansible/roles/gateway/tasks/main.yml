@@ -38,7 +38,7 @@
 - name: Check for existing gateway-config
   stat:
     path: /usr/local/etc/nais-device
-    register: private_key
+  register: private_key
 
 - name: Move private key if already generated
   copy:
