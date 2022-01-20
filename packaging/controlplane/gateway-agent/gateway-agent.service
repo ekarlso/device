@@ -1,5 +1,4 @@
 # vi:syntax=systemd
-
 [Unit]
 Description=naisdevice gateway agent
 
@@ -12,4 +11,3 @@ ExecStart=/usr/bin/gateway-agent
 
 [Install]
 WantedBy=multi-user.target
-

@@ -5,6 +5,8 @@ Description=apiserver
 [Service]
 Restart=always
 EnvironmentFile=/etc/default/apiserver
+StandardOutput=append:/var/log/naisdevice/gateway-agent.json
+StandardError=append:/var/log/naisdevice/gateway-agent.json
 ExecStart=/usr/bin/apiserver
 
 [Install]
