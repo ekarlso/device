@@ -4,9 +4,14 @@ Description=apiserver
 
 [Service]
 Restart=always
-EnvironmentFile=/etc/default/apiserver
 StandardOutput=append:/var/log/naisdevice/gateway-agent.json
 StandardError=append:/var/log/naisdevice/gateway-agent.json
+
+# This script fetches passwords and stores them in file referenced below
+ExecStartPre=/usr/bin/apiserver-fetch-passwords
+EnvironmentFile=/run/apiserver-credentials
+
+EnvironmentFile=/etc/default/apiserver
 ExecStart=/usr/bin/apiserver
 
 [Install]
