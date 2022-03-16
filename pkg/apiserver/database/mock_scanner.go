@@ -10,13 +10,13 @@ type MockScanner struct {
 }
 
 // Scan provides a mock function with given fields: _a0
-func (_m *MockScanner) Scan(_a0 ...interface{}) error {
-	var _ca []interface{}
+func (_m *MockScanner) Scan(_a0 ...any) error {
+	var _ca []any
 	_ca = append(_ca, _a0...)
 	ret := _m.Called(_ca...)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(...interface{}) error); ok {
+	if rf, ok := ret.Get(0).(func(...any) error); ok {
 		r0 = rf(_a0...)
 	} else {
 		r0 = ret.Error(0)

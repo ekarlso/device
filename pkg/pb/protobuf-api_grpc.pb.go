@@ -118,7 +118,7 @@ func RegisterDeviceHelperServer(s grpc.ServiceRegistrar, srv DeviceHelperServer)
 	s.RegisterService(&DeviceHelper_ServiceDesc, srv)
 }
 
-func _DeviceHelper_Configure_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceHelper_Configure_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(Configuration)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -130,13 +130,13 @@ func _DeviceHelper_Configure_Handler(srv interface{}, ctx context.Context, dec f
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceHelper/Configure",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceHelperServer).Configure(ctx, req.(*Configuration))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DeviceHelper_Teardown_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceHelper_Teardown_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(TeardownRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -148,13 +148,13 @@ func _DeviceHelper_Teardown_Handler(srv interface{}, ctx context.Context, dec fu
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceHelper/Teardown",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceHelperServer).Teardown(ctx, req.(*TeardownRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DeviceHelper_Upgrade_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceHelper_Upgrade_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(UpgradeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -166,13 +166,13 @@ func _DeviceHelper_Upgrade_Handler(srv interface{}, ctx context.Context, dec fun
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceHelper/Upgrade",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceHelperServer).Upgrade(ctx, req.(*UpgradeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DeviceHelper_GetSerial_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceHelper_GetSerial_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(GetSerialRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -184,7 +184,7 @@ func _DeviceHelper_GetSerial_Handler(srv interface{}, ctx context.Context, dec f
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceHelper/GetSerial",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceHelperServer).GetSerial(ctx, req.(*GetSerialRequest))
 	}
 	return interceptor(ctx, in, info, handler)
@@ -377,7 +377,7 @@ func RegisterDeviceAgentServer(s grpc.ServiceRegistrar, srv DeviceAgentServer) {
 	s.RegisterService(&DeviceAgent_ServiceDesc, srv)
 }
 
-func _DeviceAgent_Status_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _DeviceAgent_Status_Handler(srv any, stream grpc.ServerStream) error {
 	m := new(AgentStatusRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
@@ -398,7 +398,7 @@ func (x *deviceAgentStatusServer) Send(m *AgentStatus) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _DeviceAgent_ConfigureJITA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceAgent_ConfigureJITA_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(ConfigureJITARequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -410,13 +410,13 @@ func _DeviceAgent_ConfigureJITA_Handler(srv interface{}, ctx context.Context, de
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceAgent/ConfigureJITA",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceAgentServer).ConfigureJITA(ctx, req.(*ConfigureJITARequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DeviceAgent_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceAgent_Login_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -428,13 +428,13 @@ func _DeviceAgent_Login_Handler(srv interface{}, ctx context.Context, dec func(i
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceAgent/Login",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceAgentServer).Login(ctx, req.(*LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DeviceAgent_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceAgent_Logout_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(LogoutRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -446,13 +446,13 @@ func _DeviceAgent_Logout_Handler(srv interface{}, ctx context.Context, dec func(
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceAgent/Logout",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceAgentServer).Logout(ctx, req.(*LogoutRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DeviceAgent_SetAgentConfiguration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceAgent_SetAgentConfiguration_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(SetAgentConfigurationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -464,13 +464,13 @@ func _DeviceAgent_SetAgentConfiguration_Handler(srv interface{}, ctx context.Con
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceAgent/SetAgentConfiguration",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceAgentServer).SetAgentConfiguration(ctx, req.(*SetAgentConfigurationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DeviceAgent_GetAgentConfiguration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeviceAgent_GetAgentConfiguration_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(GetAgentConfigurationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -482,7 +482,7 @@ func _DeviceAgent_GetAgentConfiguration_Handler(srv interface{}, ctx context.Con
 		Server:     srv,
 		FullMethod: "/naisdevice.DeviceAgent/GetAgentConfiguration",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(DeviceAgentServer).GetAgentConfiguration(ctx, req.(*GetAgentConfigurationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
@@ -745,7 +745,7 @@ func RegisterAPIServerServer(s grpc.ServiceRegistrar, srv APIServerServer) {
 	s.RegisterService(&APIServer_ServiceDesc, srv)
 }
 
-func _APIServer_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _APIServer_Login_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(APIServerLoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -757,13 +757,13 @@ func _APIServer_Login_Handler(srv interface{}, ctx context.Context, dec func(int
 		Server:     srv,
 		FullMethod: "/naisdevice.APIServer/Login",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(APIServerServer).Login(ctx, req.(*APIServerLoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _APIServer_GetDeviceConfiguration_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _APIServer_GetDeviceConfiguration_Handler(srv any, stream grpc.ServerStream) error {
 	m := new(GetDeviceConfigurationRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
@@ -784,7 +784,7 @@ func (x *aPIServerGetDeviceConfigurationServer) Send(m *GetDeviceConfigurationRe
 	return x.ServerStream.SendMsg(m)
 }
 
-func _APIServer_GetGatewayConfiguration_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _APIServer_GetGatewayConfiguration_Handler(srv any, stream grpc.ServerStream) error {
 	m := new(GetGatewayConfigurationRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
@@ -805,7 +805,7 @@ func (x *aPIServerGetGatewayConfigurationServer) Send(m *GetGatewayConfiguration
 	return x.ServerStream.SendMsg(m)
 }
 
-func _APIServer_GetGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _APIServer_GetGateway_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(ModifyGatewayRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -817,13 +817,13 @@ func _APIServer_GetGateway_Handler(srv interface{}, ctx context.Context, dec fun
 		Server:     srv,
 		FullMethod: "/naisdevice.APIServer/GetGateway",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(APIServerServer).GetGateway(ctx, req.(*ModifyGatewayRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _APIServer_ListGateways_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _APIServer_ListGateways_Handler(srv any, stream grpc.ServerStream) error {
 	m := new(ListGatewayRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
@@ -844,7 +844,7 @@ func (x *aPIServerListGatewaysServer) Send(m *Gateway) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _APIServer_EnrollGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _APIServer_EnrollGateway_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(ModifyGatewayRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -856,13 +856,13 @@ func _APIServer_EnrollGateway_Handler(srv interface{}, ctx context.Context, dec 
 		Server:     srv,
 		FullMethod: "/naisdevice.APIServer/EnrollGateway",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(APIServerServer).EnrollGateway(ctx, req.(*ModifyGatewayRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _APIServer_UpdateGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _APIServer_UpdateGateway_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(ModifyGatewayRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -874,7 +874,7 @@ func _APIServer_UpdateGateway_Handler(srv interface{}, ctx context.Context, dec 
 		Server:     srv,
 		FullMethod: "/naisdevice.APIServer/UpdateGateway",
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(APIServerServer).UpdateGateway(ctx, req.(*ModifyGatewayRequest))
 	}
 	return interceptor(ctx, in, info, handler)

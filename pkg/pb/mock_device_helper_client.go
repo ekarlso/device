@@ -17,11 +17,11 @@ type MockDeviceHelperClient struct {
 
 // Configure provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceHelperClient) Configure(ctx context.Context, in *Configuration, opts ...grpc.CallOption) (*ConfigureResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -47,11 +47,11 @@ func (_m *MockDeviceHelperClient) Configure(ctx context.Context, in *Configurati
 
 // GetSerial provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceHelperClient) GetSerial(ctx context.Context, in *GetSerialRequest, opts ...grpc.CallOption) (*GetSerialResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -77,11 +77,11 @@ func (_m *MockDeviceHelperClient) GetSerial(ctx context.Context, in *GetSerialRe
 
 // Teardown provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceHelperClient) Teardown(ctx context.Context, in *TeardownRequest, opts ...grpc.CallOption) (*TeardownResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -107,11 +107,11 @@ func (_m *MockDeviceHelperClient) Teardown(ctx context.Context, in *TeardownRequ
 
 // Upgrade provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceHelperClient) Upgrade(ctx context.Context, in *UpgradeRequest, opts ...grpc.CallOption) (*UpgradeResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)

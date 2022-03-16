@@ -31,11 +31,11 @@ func (_m *MockAPIServer_GetDeviceConfigurationServer) Context() context.Context 
 }
 
 // RecvMsg provides a mock function with given fields: m
-func (_m *MockAPIServer_GetDeviceConfigurationServer) RecvMsg(m interface{}) error {
+func (_m *MockAPIServer_GetDeviceConfigurationServer) RecvMsg(m any) error {
 	ret := _m.Called(m)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(interface{}) error); ok {
+	if rf, ok := ret.Get(0).(func(any) error); ok {
 		r0 = rf(m)
 	} else {
 		r0 = ret.Error(0)
@@ -73,11 +73,11 @@ func (_m *MockAPIServer_GetDeviceConfigurationServer) SendHeader(_a0 metadata.MD
 }
 
 // SendMsg provides a mock function with given fields: m
-func (_m *MockAPIServer_GetDeviceConfigurationServer) SendMsg(m interface{}) error {
+func (_m *MockAPIServer_GetDeviceConfigurationServer) SendMsg(m any) error {
 	ret := _m.Called(m)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(interface{}) error); ok {
+	if rf, ok := ret.Get(0).(func(any) error); ok {
 		r0 = rf(m)
 	} else {
 		r0 = ret.Error(0)

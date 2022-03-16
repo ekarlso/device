@@ -10,8 +10,8 @@ type mockLogFunc struct {
 }
 
 // Execute provides a mock function with given fields: _a0, _a1
-func (_m *mockLogFunc) Execute(_a0 string, _a1 ...interface{}) {
-	var _ca []interface{}
+func (_m *mockLogFunc) Execute(_a0 string, _a1 ...any) {
+	var _ca []any
 	_ca = append(_ca, _a0)
 	_ca = append(_ca, _a1...)
 	_m.Called(_ca...)

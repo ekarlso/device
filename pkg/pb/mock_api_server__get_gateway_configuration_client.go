@@ -91,11 +91,11 @@ func (_m *MockAPIServer_GetGatewayConfigurationClient) Recv() (*GetGatewayConfig
 }
 
 // RecvMsg provides a mock function with given fields: m
-func (_m *MockAPIServer_GetGatewayConfigurationClient) RecvMsg(m interface{}) error {
+func (_m *MockAPIServer_GetGatewayConfigurationClient) RecvMsg(m any) error {
 	ret := _m.Called(m)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(interface{}) error); ok {
+	if rf, ok := ret.Get(0).(func(any) error); ok {
 		r0 = rf(m)
 	} else {
 		r0 = ret.Error(0)
@@ -105,11 +105,11 @@ func (_m *MockAPIServer_GetGatewayConfigurationClient) RecvMsg(m interface{}) er
 }
 
 // SendMsg provides a mock function with given fields: m
-func (_m *MockAPIServer_GetGatewayConfigurationClient) SendMsg(m interface{}) error {
+func (_m *MockAPIServer_GetGatewayConfigurationClient) SendMsg(m any) error {
 	ret := _m.Called(m)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(interface{}) error); ok {
+	if rf, ok := ret.Get(0).(func(any) error); ok {
 		r0 = rf(m)
 	} else {
 		r0 = ret.Error(0)

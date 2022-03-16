@@ -43,7 +43,7 @@ type authenticator struct {
 	OAuthConfig *oauth2.Config
 	db          database.APIServer
 	store       SessionStore
-	states      map[string]interface{}
+	states      map[string]any
 	stateLock   sync.Mutex
 	Azure       *azure.Azure
 }
@@ -52,7 +52,7 @@ func NewAuthenticator(a *azure.Azure, db database.APIServer, store SessionStore)
 	return &authenticator{
 		db:     db,
 		store:  store,
-		states: make(map[string]interface{}),
+		states: make(map[string]any),
 		Azure:  a,
 		OAuthConfig: &oauth2.Config{
 			// RedirectURL:  "http://localhost",  don't set this
@@ -171,7 +171,7 @@ func (s *authenticator) LoginHTTP(w http.ResponseWriter, r *http.Request) {
 func (s *authenticator) AuthURL(w http.ResponseWriter, r *http.Request) {
 	state := random.RandomString(20, random.LettersAndNumbers)
 	s.stateLock.Lock()
-	s.states[state] = new(interface{})
+	s.states[state] = new(any)
 	s.stateLock.Unlock()
 
 	listenPort, err := parseListenPort(r.Header.Get(HeaderKeyListenPort))
@@ -208,7 +208,7 @@ func (s *authenticator) Login(ctx context.Context, token, serial, platform strin
 	}
 
 	var groups []string
-	for _, group := range claims["groups"].([]interface{}) {
+	for _, group := range claims["groups"].([]any) {
 		groups = append(groups, group.(string))
 	}
 
@@ -242,7 +242,7 @@ func (s *authenticator) Login(ctx context.Context, token, serial, platform strin
 	return session, nil
 }
 
-func authFailed(w http.ResponseWriter, format string, args ...interface{}) {
+func authFailed(w http.ResponseWriter, format string, args ...any) {
 	w.WriteHeader(http.StatusForbidden)
 	log.Warnf(format, args...)
 }

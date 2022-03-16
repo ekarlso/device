@@ -2214,7 +2214,7 @@ func file_pkg_pb_protobuf_api_proto_rawDescGZIP() []byte {
 
 var file_pkg_pb_protobuf_api_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_pkg_pb_protobuf_api_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
-var file_pkg_pb_protobuf_api_proto_goTypes = []interface{}{
+var file_pkg_pb_protobuf_api_proto_goTypes = []any{
 	(AgentState)(0),                         // 0: naisdevice.AgentState
 	(DeviceConfigurationStatus)(0),          // 1: naisdevice.DeviceConfigurationStatus
 	(*TeardownRequest)(nil),                 // 2: naisdevice.TeardownRequest
@@ -2318,7 +2318,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_pkg_pb_protobuf_api_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[0].Exporter = func(v any, i int) any {
 			switch v := v.(*TeardownRequest); i {
 			case 0:
 				return &v.state
@@ -2330,7 +2330,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[1].Exporter = func(v any, i int) any {
 			switch v := v.(*TeardownResponse); i {
 			case 0:
 				return &v.state
@@ -2342,7 +2342,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[2].Exporter = func(v any, i int) any {
 			switch v := v.(*ConfigureResponse); i {
 			case 0:
 				return &v.state
@@ -2354,7 +2354,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[3].Exporter = func(v any, i int) any {
 			switch v := v.(*ConfigureJITAResponse); i {
 			case 0:
 				return &v.state
@@ -2366,7 +2366,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[4].Exporter = func(v any, i int) any {
 			switch v := v.(*LoginResponse); i {
 			case 0:
 				return &v.state
@@ -2378,7 +2378,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[5].Exporter = func(v any, i int) any {
 			switch v := v.(*LogoutResponse); i {
 			case 0:
 				return &v.state
@@ -2390,7 +2390,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[6].Exporter = func(v any, i int) any {
 			switch v := v.(*UpgradeRequest); i {
 			case 0:
 				return &v.state
@@ -2402,7 +2402,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[7].Exporter = func(v any, i int) any {
 			switch v := v.(*UpgradeResponse); i {
 			case 0:
 				return &v.state
@@ -2414,7 +2414,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[8].Exporter = func(v any, i int) any {
 			switch v := v.(*GetSerialRequest); i {
 			case 0:
 				return &v.state
@@ -2426,7 +2426,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[9].Exporter = func(v any, i int) any {
 			switch v := v.(*GetSerialResponse); i {
 			case 0:
 				return &v.state
@@ -2438,7 +2438,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[10].Exporter = func(v any, i int) any {
 			switch v := v.(*ConfigureJITARequest); i {
 			case 0:
 				return &v.state
@@ -2450,7 +2450,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[11].Exporter = func(v any, i int) any {
 			switch v := v.(*LoginRequest); i {
 			case 0:
 				return &v.state
@@ -2462,7 +2462,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[12].Exporter = func(v any, i int) any {
 			switch v := v.(*LogoutRequest); i {
 			case 0:
 				return &v.state
@@ -2474,7 +2474,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[13].Exporter = func(v any, i int) any {
 			switch v := v.(*SetAgentConfigurationRequest); i {
 			case 0:
 				return &v.state
@@ -2486,7 +2486,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[14].Exporter = func(v any, i int) any {
 			switch v := v.(*SetAgentConfigurationResponse); i {
 			case 0:
 				return &v.state
@@ -2498,7 +2498,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[15].Exporter = func(v any, i int) any {
 			switch v := v.(*GetAgentConfigurationRequest); i {
 			case 0:
 				return &v.state
@@ -2510,7 +2510,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[16].Exporter = func(v any, i int) any {
 			switch v := v.(*GetAgentConfigurationResponse); i {
 			case 0:
 				return &v.state
@@ -2522,7 +2522,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[17].Exporter = func(v any, i int) any {
 			switch v := v.(*AgentStatusRequest); i {
 			case 0:
 				return &v.state
@@ -2534,7 +2534,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[18].Exporter = func(v any, i int) any {
 			switch v := v.(*AgentStatus); i {
 			case 0:
 				return &v.state
@@ -2546,7 +2546,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[19].Exporter = func(v any, i int) any {
 			switch v := v.(*Configuration); i {
 			case 0:
 				return &v.state
@@ -2558,7 +2558,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[20].Exporter = func(v any, i int) any {
 			switch v := v.(*ModifyGatewayRequest); i {
 			case 0:
 				return &v.state
@@ -2570,7 +2570,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[21].Exporter = func(v any, i int) any {
 			switch v := v.(*ModifyGatewayResponse); i {
 			case 0:
 				return &v.state
@@ -2582,7 +2582,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[22].Exporter = func(v any, i int) any {
 			switch v := v.(*Gateway); i {
 			case 0:
 				return &v.state
@@ -2594,7 +2594,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[23].Exporter = func(v any, i int) any {
 			switch v := v.(*Error); i {
 			case 0:
 				return &v.state
@@ -2606,7 +2606,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[24].Exporter = func(v any, i int) any {
 			switch v := v.(*AgentConfiguration); i {
 			case 0:
 				return &v.state
@@ -2618,7 +2618,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[25].Exporter = func(v any, i int) any {
 			switch v := v.(*GetGatewayConfigurationRequest); i {
 			case 0:
 				return &v.state
@@ -2630,7 +2630,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[26].Exporter = func(v any, i int) any {
 			switch v := v.(*GetGatewayConfigurationResponse); i {
 			case 0:
 				return &v.state
@@ -2642,7 +2642,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[27].Exporter = func(v any, i int) any {
 			switch v := v.(*GetDeviceConfigurationRequest); i {
 			case 0:
 				return &v.state
@@ -2654,7 +2654,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[28].Exporter = func(v any, i int) any {
 			switch v := v.(*APIServerLoginRequest); i {
 			case 0:
 				return &v.state
@@ -2666,7 +2666,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[29].Exporter = func(v any, i int) any {
 			switch v := v.(*APIServerLoginResponse); i {
 			case 0:
 				return &v.state
@@ -2678,7 +2678,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[30].Exporter = func(v any, i int) any {
 			switch v := v.(*GetDeviceConfigurationResponse); i {
 			case 0:
 				return &v.state
@@ -2690,7 +2690,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[31].Exporter = func(v any, i int) any {
 			switch v := v.(*ListGatewayRequest); i {
 			case 0:
 				return &v.state
@@ -2702,7 +2702,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[32].Exporter = func(v any, i int) any {
 			switch v := v.(*Device); i {
 			case 0:
 				return &v.state
@@ -2714,7 +2714,7 @@ func file_pkg_pb_protobuf_api_proto_init() {
 				return nil
 			}
 		}
-		file_pkg_pb_protobuf_api_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
+		file_pkg_pb_protobuf_api_proto_msgTypes[33].Exporter = func(v any, i int) any {
 			switch v := v.(*Session); i {
 			case 0:
 				return &v.state

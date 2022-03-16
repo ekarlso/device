@@ -93,8 +93,8 @@ func (a *Azure) TokenValidatorMiddleware() func(next http.Handler) http.Handler 
 	}
 }
 
-func UserInNaisdeviceApprovalGroup(claims map[string]interface{}) bool {
-	for _, group := range claims["groups"].([]interface{}) {
+func UserInNaisdeviceApprovalGroup(claims map[string]any) bool {
+	for _, group := range claims["groups"].([]any) {
 		if group.(string) == NaisDeviceApprovalGroup {
 			return true
 		}

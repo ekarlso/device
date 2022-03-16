@@ -55,7 +55,7 @@ func handleSignals(cancel context.CancelFunc) {
 			Level:   sentry.LevelInfo,
 			Message: "signal received",
 			Type:    "debug",
-			Data: map[string]interface{}{
+			Data: map[string]any{
 				"signal": sig,
 			},
 			Category: "eventloop",
@@ -92,7 +92,7 @@ func main() {
 		Level:   sentry.LevelInfo,
 		Message: "main",
 		Type:    "type",
-		Data: map[string]interface{}{
+		Data: map[string]any{
 			"key": "value",
 		},
 		Category: "category",

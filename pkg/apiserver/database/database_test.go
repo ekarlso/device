@@ -61,7 +61,7 @@ func TestAddGateway(t *testing.T) {
 		assert.Error(t, db.AddGateway(ctx, existingGateway))
 	})
 
-	t.Run("adding a gateway with an existing public key fails", func (t *testing.T) {
+	t.Run("adding a gateway with an existing public key fails", func(t *testing.T) {
 		existingGateway, err := db.ReadGateway(ctx, g.Name)
 		assert.NoError(t, err)
 		existingGateway.Name = "new name"

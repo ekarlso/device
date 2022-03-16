@@ -17,11 +17,11 @@ type MockAPIServerClient struct {
 
 // EnrollGateway provides a mock function with given fields: ctx, in, opts
 func (_m *MockAPIServerClient) EnrollGateway(ctx context.Context, in *ModifyGatewayRequest, opts ...grpc.CallOption) (*ModifyGatewayResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -47,11 +47,11 @@ func (_m *MockAPIServerClient) EnrollGateway(ctx context.Context, in *ModifyGate
 
 // GetDeviceConfiguration provides a mock function with given fields: ctx, in, opts
 func (_m *MockAPIServerClient) GetDeviceConfiguration(ctx context.Context, in *GetDeviceConfigurationRequest, opts ...grpc.CallOption) (APIServer_GetDeviceConfigurationClient, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -77,11 +77,11 @@ func (_m *MockAPIServerClient) GetDeviceConfiguration(ctx context.Context, in *G
 
 // GetGateway provides a mock function with given fields: ctx, in, opts
 func (_m *MockAPIServerClient) GetGateway(ctx context.Context, in *ModifyGatewayRequest, opts ...grpc.CallOption) (*Gateway, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -107,11 +107,11 @@ func (_m *MockAPIServerClient) GetGateway(ctx context.Context, in *ModifyGateway
 
 // GetGatewayConfiguration provides a mock function with given fields: ctx, in, opts
 func (_m *MockAPIServerClient) GetGatewayConfiguration(ctx context.Context, in *GetGatewayConfigurationRequest, opts ...grpc.CallOption) (APIServer_GetGatewayConfigurationClient, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -137,11 +137,11 @@ func (_m *MockAPIServerClient) GetGatewayConfiguration(ctx context.Context, in *
 
 // ListGateways provides a mock function with given fields: ctx, in, opts
 func (_m *MockAPIServerClient) ListGateways(ctx context.Context, in *ListGatewayRequest, opts ...grpc.CallOption) (APIServer_ListGatewaysClient, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -167,11 +167,11 @@ func (_m *MockAPIServerClient) ListGateways(ctx context.Context, in *ListGateway
 
 // Login provides a mock function with given fields: ctx, in, opts
 func (_m *MockAPIServerClient) Login(ctx context.Context, in *APIServerLoginRequest, opts ...grpc.CallOption) (*APIServerLoginResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -197,11 +197,11 @@ func (_m *MockAPIServerClient) Login(ctx context.Context, in *APIServerLoginRequ
 
 // UpdateGateway provides a mock function with given fields: ctx, in, opts
 func (_m *MockAPIServerClient) UpdateGateway(ctx context.Context, in *ModifyGatewayRequest, opts ...grpc.CallOption) (*ModifyGatewayResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)

@@ -17,11 +17,11 @@ type MockDeviceAgentClient struct {
 
 // ConfigureJITA provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceAgentClient) ConfigureJITA(ctx context.Context, in *ConfigureJITARequest, opts ...grpc.CallOption) (*ConfigureJITAResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -47,11 +47,11 @@ func (_m *MockDeviceAgentClient) ConfigureJITA(ctx context.Context, in *Configur
 
 // GetAgentConfiguration provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceAgentClient) GetAgentConfiguration(ctx context.Context, in *GetAgentConfigurationRequest, opts ...grpc.CallOption) (*GetAgentConfigurationResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -77,11 +77,11 @@ func (_m *MockDeviceAgentClient) GetAgentConfiguration(ctx context.Context, in *
 
 // Login provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceAgentClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -107,11 +107,11 @@ func (_m *MockDeviceAgentClient) Login(ctx context.Context, in *LoginRequest, op
 
 // Logout provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceAgentClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -137,11 +137,11 @@ func (_m *MockDeviceAgentClient) Logout(ctx context.Context, in *LogoutRequest, 
 
 // SetAgentConfiguration provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceAgentClient) SetAgentConfiguration(ctx context.Context, in *SetAgentConfigurationRequest, opts ...grpc.CallOption) (*SetAgentConfigurationResponse, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
@@ -167,11 +167,11 @@ func (_m *MockDeviceAgentClient) SetAgentConfiguration(ctx context.Context, in *
 
 // Status provides a mock function with given fields: ctx, in, opts
 func (_m *MockDeviceAgentClient) Status(ctx context.Context, in *AgentStatusRequest, opts ...grpc.CallOption) (DeviceAgent_StatusClient, error) {
-	_va := make([]interface{}, len(opts))
+	_va := make([]any, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
 	}
-	var _ca []interface{}
+	var _ca []any
 	_ca = append(_ca, ctx, in)
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
