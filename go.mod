@@ -1,6 +1,6 @@
 module github.com/nais/device
 
-go 1.17
+go 1.18
 
 require (
 	cloud.google.com/go/secretmanager v0.1.0
@@ -41,9 +41,7 @@ require (
 	google.golang.org/protobuf v1.27.1
 )
 
-require github.com/golang/protobuf v1.5.2
-
-require github.com/akavel/rsrc v0.10.2 // indirect
+require github.com/golang/protobuf v1.5.2 // indirect
 
 require (
 	cloud.google.com/go v0.95.0 // indirect
