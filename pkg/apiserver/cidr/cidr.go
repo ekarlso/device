@@ -16,8 +16,8 @@ func FindAvailableIP(cidr netip.Prefix, allocated []string) (string, error) {
 	return "", fmt.Errorf("no available IPs in range %v", cidr)
 }
 
-func toMap(strings []string) map[string]struct{} {
-	m := make(map[string]struct{})
+func toMap[T comparable](strings []T) map[T]struct{} {
+	m := make(map[T]struct{})
 	for _, s := range strings {
 		m[s] = struct{}{}
 	}
