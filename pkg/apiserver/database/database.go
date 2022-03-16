@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"net/netip"
 	"strings"
 	"sync"
 	"time"
@@ -16,9 +17,7 @@ import (
 	"github.com/nais/device/pkg/pb"
 )
 
-const (
-	TunnelCidr = "10.255.240.0/21"
-)
+var TunnelCidr = netip.PrefixFrom(netip.AddrFrom4([4]byte{10, 255, 240, 0}), 21)
 
 type apiServerDB struct {
 	conn *sql.DB
@@ -65,7 +64,6 @@ func (db *apiServerDB) ReadDevices(ctx context.Context) ([]*pb.Device, error) {
 	devices := make([]*pb.Device, 0) // don't want nil declaration here as this JSON encodes to 'null' instead of '[]'
 	for rows.Next() {
 		device, err := scanDevice(rows)
-
 		if err != nil {
 			return nil, err
 		}
@@ -274,7 +272,6 @@ func (db *apiServerDB) ReadGateways(ctx context.Context) ([]*pb.Gateway, error) 
 	}
 
 	return gateways, nil
-
 }
 
 func (db *apiServerDB) ReadGateway(ctx context.Context, name string) (*pb.Gateway, error) {
@@ -390,7 +387,6 @@ func (db *apiServerDB) Migrate(ctx context.Context) error {
 	query := "SELECT MAX(version) FROM migrations"
 	row := db.conn.QueryRowContext(ctx, query)
 	err := row.Scan(&version)
-
 	if err != nil {
 		// error might be due to no schema.
 		// no way to detect this, so log error and continue with migrations.
