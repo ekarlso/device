@@ -13,15 +13,17 @@ import (
 	"os"
 	"path/filepath"
 
+	mdns "github.com/miekg/dns"
+	"github.com/nais/device/pkg/device-agent/wireguard"
+	"github.com/nais/device/pkg/dns"
 	"github.com/nais/device/pkg/helper/config"
 	"github.com/nais/device/pkg/helper/serial"
+	"github.com/nais/device/pkg/pb"
 	wireguard2 "github.com/nais/device/pkg/wireguard"
+	nbdns "github.com/netbirdio/netbird/dns"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-
-	"github.com/nais/device/pkg/device-agent/wireguard"
-	"github.com/nais/device/pkg/pb"
 )
 
 type OSConfigurator interface {
@@ -37,11 +39,11 @@ type DeviceHelperServer struct {
 	Config         Config
 	OSConfigurator OSConfigurator
 	Wireguard      *wireguard2.Config
+	Nameservers    []nbdns.NameServer
+	DNSServer      *dns.DefaultServer
 }
 
-var (
-	WireGuardConfigPath = filepath.Join(config.ConfigDir, "utun69.conf")
-)
+var WireGuardConfigPath = filepath.Join(config.ConfigDir, "utun69.conf")
 
 func (dhs *DeviceHelperServer) Teardown(ctx context.Context, req *pb.TeardownRequest) (*pb.TeardownResponse, error) {
 	log.Infof("Removing network interface '%s' and all routes", dhs.Config.Interface)
@@ -87,6 +89,40 @@ func (dhs *DeviceHelperServer) Configure(ctx context.Context, cfg *pb.Configurat
 		return nil, status.Errorf(codes.FailedPrecondition, "setting up routes: %s", err)
 	}
 
+	if len(cfg.DnsZones) > 0 {
+		cz := []nbdns.CustomZone{}
+		for _, zone := range cfg.DnsZones {
+			records := []nbdns.SimpleRecord{}
+			for _, record := range zone.GetRecords() {
+				records = append(records, nbdns.SimpleRecord{
+					Name:  record.GetName(),
+					Type:  int(mdns.TypeA),
+					Class: nbdns.DefaultClass,
+					TTL:   60,
+					RData: record.GetRdata(),
+				})
+			}
+			cz = append(cz, nbdns.CustomZone{
+				Domain:  zone.GetDomain(),
+				Records: records,
+			})
+		}
+
+		err = dhs.DNSServer.UpdateDNSServer(3, nbdns.Config{
+			ServiceEnable: true,
+			NameServerGroups: []*nbdns.NameServerGroup{
+				{
+					Primary:     true,
+					NameServers: dhs.Nameservers,
+				},
+			},
+			CustomZones: cz,
+		})
+		if err != nil {
+			return nil, status.Errorf(codes.FailedPrecondition, "setting up DNS: %s", err)
+		}
+	}
+
 	return &pb.ConfigureResponse{}, nil
 }
 
@@ -98,7 +134,7 @@ func (dhs *DeviceHelperServer) writeConfigFile(cfg *pb.Configuration) error {
 		return fmt.Errorf("render configuration: %s", err)
 	}
 
-	fd, err := os.OpenFile(WireGuardConfigPath, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0600)
+	fd, err := os.OpenFile(WireGuardConfigPath, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0o600)
 	if err != nil {
 		return fmt.Errorf("open file: %s", err)
 	}

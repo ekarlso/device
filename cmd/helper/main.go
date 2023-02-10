@@ -2,18 +2,22 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"net/netip"
 	"os"
 	"os/signal"
 	"path/filepath"
 	"syscall"
 	"time"
 
+	"github.com/nais/device/pkg/dns"
 	"github.com/nais/device/pkg/helper"
 	"github.com/nais/device/pkg/helper/config"
 	"github.com/nais/device/pkg/logger"
 	"github.com/nais/device/pkg/pb"
 	"github.com/nais/device/pkg/unixsocket"
 	"github.com/nais/device/pkg/version"
+	nbdns "github.com/netbirdio/netbird/dns"
 	log "github.com/sirupsen/logrus"
 	flag "github.com/spf13/pflag"
 	"google.golang.org/grpc"
@@ -63,9 +67,25 @@ func main() {
 	notifier := pb.NewConnectionNotifier()
 	grpcServer := grpc.NewServer(grpc.StatsHandler(notifier))
 
+	ns, err := dns.DefaultNameServers()
+	if err != nil {
+		log.Errorf("Unable to get default nameservers: %v", err)
+	}
+
+	if len(ns) == 0 {
+		fmt.Println("No nameservers found, defaulting to Cloudflare DNS")
+		ns = []nbdns.NameServer{
+			{NSType: nbdns.UDPNameServerType, IP: netip.MustParseAddr("1.1.1.1"), Port: 53},
+		}
+	}
+
+	dnsServer, err := dns.NewDefaultServer(programContext, cfg.Interface, "")
+
 	dhs := &helper.DeviceHelperServer{
 		Config:         cfg,
 		OSConfigurator: osConfigurator,
+		Nameservers:    ns,
+		DNSServer:      dnsServer,
 	}
 	pb.RegisterDeviceHelperServer(grpcServer, dhs)
 

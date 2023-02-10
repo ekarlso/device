@@ -190,6 +190,7 @@ message Configuration {
   string privateKey = 1;
   string deviceIP = 2;
   repeated Gateway Gateways = 3;
+  repeated DNSZone dnsZones = 4;
 }
 
 message ModifyGatewayRequest {
@@ -272,6 +273,7 @@ message APIServerLoginResponse {
 message GetDeviceConfigurationResponse {
   DeviceConfigurationStatus status = 1;
   repeated Gateway Gateways = 2;
+  repeated DNSZone dnsZones = 3;
 }
 
 message ListGatewayRequest {
@@ -298,4 +300,14 @@ message Session {
   Device device = 3;
   repeated string groups = 4;
   string objectID = 5;
+}
+
+message DNSZone {
+  string domain = 1;
+  repeated DNSRecord records = 2;
+}
+
+message DNSRecord {
+  string name = 1;
+  string rdata = 2;
 }
