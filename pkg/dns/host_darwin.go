@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 
+	nbdns "github.com/netbirdio/netbird/dns"
 	log "github.com/sirupsen/logrus"
 )
 
